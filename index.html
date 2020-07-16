@@ -8,7 +8,7 @@
 
 <!-- Create an element where the map will take place -->
 <svg id="my_dataviz" width="400" height="300"></svg>
-
+<div name=“tooltip” opacity=0></div>
 <script>
 
     // The svg
@@ -30,6 +30,14 @@
       .domain([100, 500, 1000, 2000])
       
     .range(d3.schemeTableau10);
+
+    var tooltip = d3.select("body")
+    .append("div")
+    .attr("id", "mytooltip")
+    .style("position", "absolute")
+    .style("z-index", "10")
+    .style("visibility", "hidden")
+    .text("a simple tooltip");
     
     // Load external data and boot
     d3.queue()
@@ -48,6 +56,9 @@
           .duration(200)
           .style("opacity", 1)
           .style("stroke", "black")
+        d3.select("#mytooltip")
+          .style("visibility", "visible")//set style to it
+          .text("new tooltip")//set text to it
       }
     
       let mouseLeave = function(d) {
@@ -59,6 +70,7 @@
           .transition()
           .duration(200)
           .style("stroke", "transparent")
+          tooltip.style("visibility", "hidden")
       }
     
       console.log(data);
@@ -83,6 +95,7 @@
           .attr("class", function(d){ return "Country" } )
           .style("opacity", 1)
           .on("mouseover", mouseOver )
+          .on("mousemove", function(){return tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");})
           .on("mouseleave", mouseLeave )
         }
     
