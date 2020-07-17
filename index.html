@@ -1,123 +1,105 @@
 <!DOCTYPE html>
-<meta charset="utf-8">
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="/Users/faraz/MCS/CS498-DV/d3/faraz-ali.github.io/index.css">
 
 <!-- Load d3.js -->
 <script src="https://d3js.org/d3.v4.js"></script>
 <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
 <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
+<!-- <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script> -->
 
+
+<script src="/Users/faraz/MCS/CS498-DV/d3/faraz-ali.github.io/map.js"></script>
+<script src="/Users/faraz/MCS/CS498-DV/d3/faraz-ali.github.io/bar2.js"></script>
+
+</head>
+<body>
+<h1>Data Visualization - Final Project</h1>
+
+<p>Click on the buttons inside the tabbed menu:</p>
 
 <div class="tab">
 	<button class="tablinks" onclick="openVisualization(event, 'Overview')">About the Visualization</button>
-	<button class="tablinks" onclick="openVisualization(event, 'AreaChart')">Property Price Analysis</button>
-	<button class="tablinks" onclick="openVisualization(event, 'ParallelCoords')">Multidimentional Analysis</button>
+	<button class="tablinks" onclick="openVisualization(event, 'WorldMap')">World Map</button>
+	<button class="tablinks" onclick="openVisualization(event, 'BarChart')">Bar Chart</button>
 </div>
 
-<!-- Create an element where the map will take place -->
-<svg id="my_dataviz" width="1000" height="800"></svg>
-<!-- <div name=“tooltip” opacity=0></div> -->
-<meta charset="utf-8">
+<div id="Overview" class="tabcontent">
+   <ul>
+      <li>
+         Does the narrative visualization correctly follow the hybrid structure as stated by the essay?
+         <p>The narrative visualization follows the Martini glass structure with vague note of interactive slide-show(the tabbed experience). 
+         Initially, a world Map is shown
+			
+         </p>
+      </li>
+      <li>
+         Does the narrative visualization effectively utilize scenes?
+         <p>There are three scenes in total. The first is the overview/description, which may not count as a real scene although it is still part of the state machine...
+         </p>
+      </li>
+      <li>
+         Does the narrative visualization effectively utilize annotations?
+         <p> TODO
+		 </p>
+      </li>
+      <li>
+         Does the narrative visualization effectively utilize parameters?
+         <p> TODO
+         </p>
+      </li>
+      <li>
+         Does the narrative visualization effectively utilize triggers?
+         <p>TODO
+		 </p>
+      </li>
+	   <li>
+         Code organization.
+         <p> TODO
+		 </p>
+      </li>
+   </ul>
+</div>
 
+<div id="WorldMap" class="tabcontent">
+  <div id="tooltip"></div>
+	<p> World Map
+	</p>
+</div>
+
+<div id="BarChart" class="tabcontent">
+	<p>Bar Chart
+	</p>
+</div>
 
 <script>
-
-    // The svg
-    var svg = d3.select("svg"),
-      width = +svg.attr("width"),
-      height = +svg.attr("height");
-    
-    // Map and projection
-    var path = d3.geoPath();
-    var projection = d3.geoMercator()
-      .scale(70)
-      .center([0,20])
-      .translate([width / 2, height / 2]);
-    
-    // Data and color scale
-    var data = d3.map();
-    var colorScale = d3.scaleLinear()
-      .domain([-10000, 0, 500, 1000, 2000])
-      .range(["green", "beige", "yellow", "orange", "red"])
-
-   function total(s) {
-      if (s == undefined) {
-         s = "N/A";
-      }
-      return s;
-   }
-
-    var tooltip = d3.select("body")
-    .append("div")
-    .attr("id", "mytooltip")
-    .style("position", "absolute")
-   //  .style("z-index", "10")
-    .style("visibility", "hidden")
-    .html("a simple tooltip")
-    .style("border", "solid")
-    .style("border-width", "1px")
-    .style("border-radius", "5px")
-    .style("padding", "5px");
-    
-    // Load external data and boot
-    d3.queue()
-      .defer(d3.json, "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson")
-      .defer(d3.csv, "https://raw.githubusercontent.com/faraz-ali/faraz-ali.github.io/master/excess_deaths.csv", function(d) { data.set(d.country, +d.excess); })
-      .await(ready);
-    function ready(error, topo) {
-    
-      let mouseOver = function(d) {
-        d3.selectAll(".Country")
-          .transition()
-          .duration(200)
-          .style("opacity", .5)
-        d3.select(this)
-          .transition()
-          .duration(200)
-          .style("opacity", 1)
-          .style("stroke", "black")
-        d3.select("#mytooltip")
-          .style("visibility", "visible")//set style to it
-         //  .text(d.properties.name + " " + total(data.get(d.properties.name)))
-         .html(d.properties.name + "<br>" + "excess deaths: " + total(data.get(d.properties.name)))
-      .style("left", (d3.mouse(this)[0]+70) + "px")
-      .style("top", (d3.mouse(this)[1]) + "px")
-			
-      }
-    
-      let mouseLeave = function(d) {
-        d3.selectAll(".Country")
-          .transition()
-          .duration(200)
-          .style("opacity", .8)
-        d3.select(this)
-          .transition()
-          .duration(200)
-          .style("stroke", "transparent")
-          tooltip.style("visibility", "hidden")
-      }
-
-      // Draw the map
-      svg.append("g")
-        .selectAll("path")
-        .data(topo.features)
-        .enter()
-        .append("path")
-          // draw each country
-          .attr("d", d3.geoPath()
-            .projection(projection)
-          )
-          
-          // set the color of each country
-          .attr("fill", function (d) {
-               d.total = data.get(d.properties.name) || 0;
-            return colorScale(d.total);
-          })
-          .style("stroke", "transparent")
-          .attr("class", function(d){ return "Country" } )
-          .style("opacity", 1)
-          .on("mouseover", mouseOver )
-          .on("mousemove", function(){return tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");})
-          .on("mouseleave", mouseLeave )
-        }
-    
-    </script>
+function openVisualization(evt, visName) {
+    var i, tabcontent, tablinks;
+	d3.select("svg").remove();
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+			tablinks[i].className = tablinks[i].className.replace(" active", "");
+			tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(visName).style.display = "block";
+	if(evt!==0)
+		evt.currentTarget.className += " active";
+		
+	if(visName==='BarChart')
+      barChart.display();
+	if(visName==='WorldMap')
+		worldMap.display();
+	if(visName==='Overview')
+		tablinks[0].className += " active";
+}
+openVisualization(0,'Overview');
+</script>
+     
+</body>
+</html> 
