@@ -1,107 +1,127 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- <link rel="stylesheet" type="text/css" href="https://raw.githubusercontent.com/faraz-ali/faraz-ali.github.io/master/index.css"> -->
-<link rel="stylesheet" type="text/css" href="index.css">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" type="text/css" href="index.css">
 
-<!-- Load d3.js -->
-<script src="https://d3js.org/d3.v4.js"></script>
-<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
-<script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
+   <!-- Load d3.js -->
+   <script src="https://d3js.org/d3.v4.js"></script>
+   <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+   <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
 
-<!-- <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script> -->
-
-
-<script src="map.js"></script>
-<script src="bar2.js"></script>
+   <script src="map.js"></script>
+   <script src="bar2.js"></script>
+   <script src="pie.js"></script>
+   <script src="pie2.js"></script>
 
 </head>
+
 <body>
-<h1>Data Visualization - Final Project</h1>
+   <h1>Data Visualization - Final Project</h1>
 
-<p>Click on the buttons inside the tabbed menu:</p>
+   <p>Click on the buttons inside the tabbed menu:</p>
 
-<div class="tab">
-	<button class="tablinks" onclick="openVisualization(event, 'Overview')">About the Visualization</button>
-	<button class="tablinks" onclick="openVisualization(event, 'WorldMap')">World Map</button>
-	<button class="tablinks" onclick="openVisualization(event, 'BarChart')">Bar Chart</button>
-</div>
+   <div class="tab">
+      <button class="tablinks" onclick="openScene(event, 'Overview')">About the Visualization</button>
+      <button class="tablinks" onclick="openScene(event, 'WorldMap')">World Map</button>
+      <button class="tablinks" onclick="openScene(event, 'BarChart')">Bar Chart</button>
+      <button class="tablinks" onclick="openScene(event, 'PieChart')">Severely Affected Countries</button>
+      <button class="tablinks" onclick="openScene(event, 'PieChart2')">Safer Countries</button>
+   </div>
 
-<div id="Overview" class="tabcontent">
-   <ul>
-      <li>
-         Does the narrative visualization correctly follow the hybrid structure as stated by the essay?
-         <p>The narrative visualization follows the Martini glass structure with vague note of interactive slide-show(the tabbed experience). 
-         Initially, a world Map is shown
-			
-         </p>
-      </li>
-      <li>
-         Does the narrative visualization effectively utilize scenes?
-         <p>There are three scenes in total. The first is the overview/description, which may not count as a real scene although it is still part of the state machine...
-         </p>
-      </li>
-      <li>
-         Does the narrative visualization effectively utilize annotations?
-         <p> TODO
-		 </p>
-      </li>
-      <li>
-         Does the narrative visualization effectively utilize parameters?
-         <p> TODO
-         </p>
-      </li>
-      <li>
-         Does the narrative visualization effectively utilize triggers?
-         <p>TODO
-		 </p>
-      </li>
-	   <li>
-         Code organization.
-         <p> TODO
-		 </p>
-      </li>
-   </ul>
-</div>
+   <div id="Overview" class="tabcontent">
+      <ul>
+         <li>
+            Does the narrative visualization correctly follow the hybrid structure as stated by the essay?
+            <p>The narrative visualization follows the Martini glass structure with vague note of interactive
+               slide-show(the tabbed experience).
+               Initially, a world Map is shown
 
-<div id="WorldMap" class="tabcontent">
-  <div id="tooltip"></div>
-	<p> World Map
-	</p>
-</div>
+            </p>
+         </li>
+         <li>
+            Does the narrative visualization effectively utilize scenes?
+            <p>There are 5 scenes in total. The first is the overview/description, which may not count as a real
+               scene although it is still part of the state machine...
+            </p>
+         </li>
+         <li>
+            Does the narrative visualization effectively utilize annotations?
+            <p> TODO
+            </p>
+         </li>
+         <li>
+            Does the narrative visualization effectively utilize parameters?
+            <p> TODO
+            </p>
+         </li>
+         <li>
+            Does the narrative visualization effectively utilize triggers?
+            <p>TODO
+            </p>
+         </li>
+         <li>
+            Code organization.
+            <p> TODO
+            </p>
+         </li>
+      </ul>
+   </div>
 
-<div id="BarChart" class="tabcontent">
-	<p>Bar Chart
-	</p>
-</div>
+   <div id="WorldMap" class="tabcontent">
+      <div id="tooltip"></div>
+      <p> World Map
+      </p>
+   </div>
 
-<script>
-function openVisualization(evt, visName) {
-    var i, tabcontent, tablinks;
-	d3.select("svg").remove();
-    tabcontent = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-    }
-    tablinks = document.getElementsByClassName("tablinks");
-    for (i = 0; i < tablinks.length; i++) {
-			tablinks[i].className = tablinks[i].className.replace(" active", "");
-			tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
-    document.getElementById(visName).style.display = "block";
-	if(evt!==0)
-		evt.currentTarget.className += " active";
-		
-	if(visName==='BarChart')
-      barChart.display();
-	if(visName==='WorldMap')
-		worldMap.display();
-	if(visName==='Overview')
-		tablinks[0].className += " active";
-}
-openVisualization(0,'Overview');
-</script>
-     
+   <div id="BarChart" class="tabcontent">
+      <p>Bar Chart
+      </p>
+   </div>
+
+   <div id="PieChart" class="tabcontent">
+      <p>Pie Chart
+      </p>
+   </div>
+   <div id="PieChart2" class="tabcontent">
+      <p>Pie Chart
+      </p>
+   </div>
+
+   <div>
+      <br>
+      <br>
+      <script>
+         function openScene(evt, visName) {
+            var i, tabcontent, tablinks;
+            d3.select("svg").remove();
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+               tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+               tablinks[i].className = tablinks[i].className.replace(" active", "");
+               tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(visName).style.display = "block";
+            if (evt !== 0)
+               evt.currentTarget.className += " active";
+            if (visName === 'BarChart')
+               barChart.display();
+            if (visName === 'WorldMap')
+               worldMap.display();
+            if (visName === 'PieChart')
+               pieChart.display();
+            if (visName === 'PieChart2')
+               pieChart2.display();
+            if (visName === 'Overview')
+               tablinks[0].className += " active";
+         }
+         openScene(0, 'Overview');
+      </script>
+   </div>
 </body>
-</html> 
+
+</html>

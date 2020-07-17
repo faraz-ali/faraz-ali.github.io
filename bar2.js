@@ -48,8 +48,8 @@ var barChart = {
         }
 
         var x = d3.scaleLinear()
-            .range([100, width - margin])
-            .rangeRound([margin.left, width - margin.right])
+            // .range([100, width - margin])
+            .rangeRound([margin.left+20, width - margin.right])
 
         var colour = d3.scaleSequential(d3.interpolateRdBu);
 
@@ -89,22 +89,13 @@ var barChart = {
                     .attr("y1", 0)
                     .attr("y2", height)
 
-            // .call(d3.axisBottom(x))
-            // .selectAll("text")
-            //   .attr("transform", "translate(-10,0)rotate(-45)")
-            //   .style("text-anchor", "end");
-
             // Add X axis
             var xAxis =
-                // d3.scaleLinear()
-                // .domain([0, 60000])
-                // .range([ height, 0]);
                 svg.append("g")
                     .attr("class", "x-axis")
                     .attr("transform", "translate(0," + (height + cfg.xAxisMargin) + ")")
                     .call(d3.axisBottom(x)
                         .tickSizeOuter(0))
-            //.tickSizeOuter(1000));
 
             // Bars
             var bars = svg.append("g")
@@ -149,6 +140,7 @@ var barChart = {
                 })
                 .text(function (d) { return d.country })
                 .style("fill", "black")
+                .style("font-size", "11px")
 
         })
 
