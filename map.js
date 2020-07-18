@@ -68,7 +68,7 @@ var worldMap = {
       d3.selectAll(".Country")
         .transition()
         .duration(200)
-        .style("opacity", .5)
+        .style("opacity", 0.8)
       d3.select(this)
         .transition()
         .duration(200)
@@ -77,7 +77,6 @@ var worldMap = {
       d3.select("#mytooltip")
         .style("opacity", 1)
         .style("visibility", "visible")//set style to it
-       //  .text(d.properties.name + " " + total(data.get(d.properties.name)))
        .html(d.properties.name + "<br>" + "excess deaths: " + total(data.get(d.properties.name)))
     .style("left", (d3.mouse(this)[0]+70) + "px")
     .style("top", (d3.mouse(this)[1]) + "px")

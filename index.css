@@ -4,18 +4,19 @@ body {
 }
 h1{
 	font-family: Arial, Helvetica, sans-serif;
-	text-align:center;
+    text-align:center;
+    color: black;
 }
 /* Style the tab */
 .tab {
     overflow: hidden;
     border: 1px solid #ccc;
-    background-color: #f1f1f1;
+    background-color:  whitesmoke;
 }
 
 /* Style the buttons inside the tab */
 .tab button {
-    background-color: inherit;
+    background-color: whitesmoke;
     float: left;
     border: none;
     outline: none;
@@ -56,7 +57,6 @@ h1{
         border-radius: 20px;
     }
 
-
     .axis path,
     .axis line {
         fill: none;
@@ -73,7 +73,6 @@ h1{
     }
 
     .tooltip {
-
         background-color: rgba(220, 220, 220, 1);
         color: #333;
         margin: 10px;
@@ -85,7 +84,6 @@ h1{
         -moz-border-radius: 20px;
         border-radius: 20px;
     }
-
 
     .background path {
         fill: none;

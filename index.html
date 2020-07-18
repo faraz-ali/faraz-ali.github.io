@@ -18,74 +18,63 @@
 </head>
 
 <body>
-   <h1>Data Visualization - Final Project</h1>
-
-   <p>Click on the buttons inside the tabbed menu:</p>
-
+   <h1>COVID-19 Pandemic Affect on Global Death Rates</h1>
+   <p>Click on the buttons inside the tabbed menu to change scenes:</p>
    <div class="tab">
       <button class="tablinks" onclick="openScene(event, 'Overview')">About the Visualization</button>
       <button class="tablinks" onclick="openScene(event, 'WorldMap')">World Map</button>
-      <button class="tablinks" onclick="openScene(event, 'BarChart')">Bar Chart</button>
+      <button class="tablinks" onclick="openScene(event, 'BarChart')">Countries Ranked</button>
       <button class="tablinks" onclick="openScene(event, 'PieChart')">Severely Affected Countries</button>
-      <button class="tablinks" onclick="openScene(event, 'PieChart2')">Safer Countries</button>
+      <button class="tablinks" onclick="openScene(event, 'PieChart2')">Lesser Affected Countries</button>
    </div>
 
    <div id="Overview" class="tabcontent">
       <ul>
-         <li>
-            Does the narrative visualization correctly follow the hybrid structure as stated by the essay?
-            <p>The narrative visualization follows the Martini glass structure with vague note of interactive
-               slide-show(the tabbed experience).
-               Initially, a world Map is shown
+         <p>
+            This narrative visualization helps the viewer to understand: <b>How is the pandemic affecting the global
+               expected death rate?</b>
+            <br>
+            Given the data from 24 countries, and filtered for the period from January 2020 – May 2020, we compare the
+            death rates to the expected baseline death rates in these countries.
+         </p>
 
-            </p>
-         </li>
-         <li>
-            Does the narrative visualization effectively utilize scenes?
-            <p>There are 5 scenes in total. The first is the overview/description, which may not count as a real
-               scene although it is still part of the state machine...
-            </p>
-         </li>
-         <li>
-            Does the narrative visualization effectively utilize annotations?
-            <p> TODO
-            </p>
-         </li>
-         <li>
-            Does the narrative visualization effectively utilize parameters?
-            <p> TODO
-            </p>
-         </li>
-         <li>
-            Does the narrative visualization effectively utilize triggers?
-            <p>TODO
-            </p>
-         </li>
-         <li>
-            Code organization.
-            <p> TODO
-            </p>
-         </li>
-      </ul>
+         Click on the button below to start the narrative, or interact with the button in the tab above.
+         <br>
+         <br>
+         <button onclick="openScene(event, 'WorldMap')">Start Narrative</button>
+         </p>
+
    </div>
 
    <div id="WorldMap" class="tabcontent">
-      <div id="tooltip"></div>
-      <p> World Map
+      <h3>COVID-19 World Choropleth</h3>
+      <p>Learn about the impact of COVID-19 pandemic worldwide. Countries which are less affected, and have fewer deaths
+         than expected, are shown in a green tone. Whereas, the countries severely affected are shown in a red tone.
+         Countries are toned out where the data is not available.
       </p>
    </div>
 
    <div id="BarChart" class="tabcontent">
-      <p>Bar Chart
+      <h3>Ranked Countries</h3>
+      <p>The bar chart plots the excess deaths in a descending sorted order, from the countries with the highest deaths
+         to the ones with the lowest.
+         The viewer can further engage with the individual bar chart to get exact numbers, which may not be obvious from
+         the x-axis tick points.
       </p>
    </div>
 
    <div id="PieChart" class="tabcontent">
-      <p>Pie Chart
+      <h3>Severely Affected Countries</h3>
+      <p>This is a drill down scene where the user can focus only on the countries where the death toll was higher than
+         expected. The color coded regions with annotated names, and tooltips provide the viewer the ability to further
+         drill down into the scene to gain exact figures and numbers.
       </p>
    </div>
    <div id="PieChart2" class="tabcontent">
-      <p>Pie Chart
+      <h3>Lesser Affected Countries</h3>
+      <p>This is a drill down scene where the user can focus only on the countries where the death toll was lower than
+         expected. The color coded regions with annotated names, and tooltips provide the viewer the ability to further
+         drill down into the scene to gain exact figures and numbers.
       </p>
    </div>
 
