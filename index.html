@@ -29,20 +29,38 @@
    </div>
 
    <div id="Overview" class="tabcontent">
-      <ul>
-         <p>
-            This narrative visualization helps the viewer to understand: <b>How is the pandemic affecting the global
-               expected death rate?</b>
-            <br>
-            Given the data from 24 countries, and filtered for the period from January 2020 – May 2020, we compare the
-            death rates to the expected baseline death rates in these countries.
-         </p>
-
-         Click on the button below to start the narrative, or interact with the button in the tab above.
+      <p>
          <br>
+         <b>Overview: </b>
+         <br>
+         This narrative visualization helps the viewer to understand: <b>How is the pandemic affecting the global
+            expected death rate?</b>
+         <br>
+         Given the data from 24 countries, and filtered for the period from January 2020 – May 2020, we compare the
+         death rates to the expected baseline death rates in these countries.
+      </p>
+      <p>
+         <br>
+         <b>Dataset: </b></Dataset> <a href="https://github.com/nytimes/covid-19-data/tree/master/excess-deaths">NY
+            Times COVID-19
+            Excess Deaths Dataset</a>
+         <br>
+         <b>Data Cleaning: </b>Dataset is filtered for the year 2020 and only the countries that have reported any
+         excess deaths
+         during 2020. Also, a group by country and sum(excess_deaths) and sum(deaths) is performed.
+         The final dataset ready for our visualization is <a
+            href="https://raw.githubusercontent.com/faraz-ali/faraz-ali.github.io/master/excess_deaths.csv">available
+            here.</a>
+         <br>
+
+      </p>
+      <p>
+         <br>
+         PleaseClick on the button below to start the narrative, or interact with the buttons in the tab above.
+
          <br>
          <button onclick="openScene(event, 'WorldMap')">Start Narrative</button>
-         </p>
+      </p>
 
    </div>
 
