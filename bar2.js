@@ -29,7 +29,7 @@ var barChart = {
 
         var mouseover = function (d) {
             tooltip
-                .html("country: " + d.country + "<br>" + "excess deaths: " + d.excess)
+                .html("country: " + d.country + "<br>" + "Excess Deaths: " + d.excess)
                 .style("opacity", 1)
                 .style("visibility", "visible")//set style to it
                 .style("left", (d3.mouse(this)[0] + 70) + "px")

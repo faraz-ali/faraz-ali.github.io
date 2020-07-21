@@ -38,26 +38,17 @@
          <br>
          Given the data from 24 countries, and filtered for the period from January 2020 – May 2020, we compare the
          death rates to the expected baseline death rates in these countries.
-      </p>
-      <p>
+         <br><br>
+         <b>Dataset: </b></Dataset>
          <br>
-         <b>Dataset: </b></Dataset> <a href="https://github.com/nytimes/covid-19-data/tree/master/excess-deaths">NY
+          <a href="https://github.com/nytimes/covid-19-data/tree/master/excess-deaths">NY
             Times COVID-19
             Excess Deaths Dataset</a>
-         <br>
-         <b>Data Cleaning: </b>Dataset is filtered for the year 2020 and only the countries that have reported any
-         excess deaths
-         during 2020. Also, a group by country and sum(excess_deaths) and sum(deaths) is performed.
-         The final dataset ready for our visualization is <a
-            href="https://raw.githubusercontent.com/faraz-ali/faraz-ali.github.io/master/excess_deaths.csv">available
-            here.</a>
-         <br>
-
       </p>
       <p>
          <br>
-         PleaseClick on the button below to start the narrative, or interact with the buttons in the tab above.
-
+         Please Click on the button below to start the narrative, or interact with the buttons in the tab above.
+         <br>
          <br>
          <button onclick="openScene(event, 'WorldMap')">Start Narrative</button>
       </p>
@@ -69,6 +60,8 @@
       <p>Learn about the impact of COVID-19 pandemic worldwide. Countries which are less affected, and have fewer deaths
          than expected, are shown in a green tone. Whereas, the countries severely affected are shown in a red tone.
          Countries are toned out where the data is not available.
+         <button onclick="openScene(event, 'Overview')">Previous Slide</button>
+         <button onclick="openScene(event, 'BarChart')">Next Slide</button>
       </p>
    </div>
 
@@ -78,6 +71,9 @@
          to the ones with the lowest.
          The viewer can further engage with the individual bar chart to get exact numbers, which may not be obvious from
          the x-axis tick points.
+
+         <button onclick="openScene(event, 'WorldMap')">Previous Slide</button>
+         <button onclick="openScene(event, 'PieChart')">Next Slide</button>
       </p>
    </div>
 
@@ -86,6 +82,8 @@
       <p>This is a drill down scene where the user can focus only on the countries where the death toll was higher than
          expected. The color coded regions with annotated names, and tooltips provide the viewer the ability to further
          drill down into the scene to gain exact figures and numbers.
+         <button onclick="openScene(event, 'PieChart')">Previous Slide</button>
+         <button onclick="openScene(event, 'PieChart2')">Next Slide</button>
       </p>
    </div>
    <div id="PieChart2" class="tabcontent">
@@ -93,6 +91,8 @@
       <p>This is a drill down scene where the user can focus only on the countries where the death toll was lower than
          expected. The color coded regions with annotated names, and tooltips provide the viewer the ability to further
          drill down into the scene to gain exact figures and numbers.
+         <button onclick="openScene(event, 'PieChart')">Previous Slide</button>
+         <button onclick="openScene(event, 'Overview')">Home</button>
       </p>
    </div>
 
